@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>log-in</title>
+        <style>
+            #main {
+                background-color: #3895D3;
+                text-align: center;
+                font-family: Times;
+                font-size: 24px;
+                padding: : 5px;
+                line-height: 200%;
+                border-radius: 25px;
+            }
+            .head {
+                text-align: center;
+                letter-spacing: 4px;
+            } 
+            .middle {
+                text-align: center;
+                color: red;
+                font-family: sans-serif;
+            }
+            button {
+                background-color: lightblue;
+                border: none;
+                color: white;
+                padding: 16px 32px;
+                text-align: center;
+                font-size: 24px;
+                width: 250px;
+                margin: 4px 2px;
+                opacity: 0.6;
+                transition: 0.3s;
+                display: inline-block;
+                text-decoration: none;
+                cursor: pointer;
+            }
+            button:hover {opacity: 1}
+            .links {
+                font-size:18px;
+                text-align: center;
+                line-height: 300%;
+                text-decoration: none;
+            }          
+        </style>
+    </head>
+    <body>
+        <h1 class="head"><i><b>Please Log in</b></i></h1>
+        <div id="main">
+                <form action="/log-in" method="post">
+                    Username : <input type="text" placeholder="Enter Username" name="username" required>
+                    <br>
+                    Password : <input type="password" placeholder="Enter Password" name="psw" required>
+                    <br>
+                    <button id= login type="submit">Log in</button>
+                </form>
+            </div>
+        <div class="links">
+            <a class="links" href="{{url_for('sign_up')}}">Don't have an account? Sign Up now!</a>
+            <br>
+            <a class="links" href="{{url_for('colored')}}">Home</a>
+        </div>
+        <div class="middle">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+    </body>
+</html>

@@ -2,35 +2,16 @@
 <html>
 <head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<style >
+	<style>
 		body {
 	margin: 0;
 }
 a {
 	text-decoration: none;
 }
-p {
-	position:absolute;
-    transition: .5s ease;
-    top: 25%;
-    left: 10%;
-    word-wrap: break-word;
-    width: 1000px;
-    text-align:center;
-}
-button {
-	width: 50%;
-	text-align:center;
-	background-color: #008CBA;
-	border-radius: 8px;
-	position: absolute;
-	left: 300px;
-  	cursor: pointer;
-
-}
 
 .top {
-	background-color: lightblue;
+	background-color: #969390;
 	text-align: center;
 	border-radius: 25px;
 }
@@ -49,6 +30,9 @@ button {
 	z-index: 100;
 	margin: auto;
 	z-index: 1;
+}
+#hidden {
+	color: #969390;
 }
 #inputForm {
 	position: relative;
@@ -69,23 +53,21 @@ button {
 	color: #fff;
 	background: #fceabb;
 	background: linear-gradient(to bottom,  #fceabb 0%,#fccd4d 33%,#f8b500 59%,#fbdf93 100%);
+}
+#colorful.off {
+	background: #4c4c4c;
+	background: linear-gradient(to bottom,  #4c4c4c 0%,#e5e5e5 0%,#888 25%,#555 49%,#444 91%,#f4f4f4 100%);
+}
 	</style>
 </head>
 <body>
 
 <script src="https://code.createjs.com/easeljs-0.8.1.min.js"></script>
 <script src="https://code.createjs.com/tweenjs-0.6.1.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
 <script>
 	window.onload = function () {
   canvasDraw.init();
-};
-
-function correction() {
-	var x = document.getElementById("inputForm").value;
-	//var better_x = api(x);
-	//document.getElementById('demo').innerHTML = better_x;
-  document.getElementById("demo").innerHTML = x;
 };
 
 var canvasDraw = {
@@ -94,11 +76,11 @@ var canvasDraw = {
 			docH: 0,
 			textFont: "Arial",
 			minFontSize: 9,
-			maxFontSize: 90,
+			maxFontSize: 80,
 			baseSpeed: 1200,
 			lowerSpeed: 5800,
 			startPosY: 10,
-			colorful: true
+			colorful: false
 		},
 		stage: null,
 		domSet: {},
@@ -218,14 +200,14 @@ var canvasDraw = {
  	<div class="top">
 		<div class="row">
 			<div class="col-sm-4"></div>	
-			<div class="col-sm-4">Hello {{name}} !</div>
+			<div class="col-sm-4" id="hidden">.</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-4">
 				<a  href="{{url_for('log_in')}}">log in</a>
 			</div>
 			<div class="col-sm-4">
-				<a  href="{{url_for('greyed')}}">Don't like colors ?</a>
+				<a  href="{{url_for('colored')}}">Back to colors ?</a>
 			</div>
 			<div class="col-sm-2" class="text-center">
 				<a  href="{{url_for('sign_up')}}">sign up</a>
@@ -233,12 +215,10 @@ var canvasDraw = {
 		</div>
 	</div>
 
-<div id="middle"><p id="demo"></p></div>
-
 <div id="content">
-<input id="inputForm" type="text" name="letters">
+<input id="inputForm" type="text" name="" value="">
 <canvas id="myCanvas"></canvas>
 </div>
-<button onclick="correction()">Try</button>
+
 </body>
 </html>

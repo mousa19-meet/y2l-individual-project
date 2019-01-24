@@ -1,14 +1,21 @@
 from flask import Flask, flash, render_template, url_for, redirect,Response, request, session as flask_session
 from database import *
 from api import *
-import json
+import json,requests
 
 app = Flask(__name__)
 
 @app.route('/')
 def colored():
-    #data = request.get_json()
     return render_template("index.html")
+
+@app.route('/custom-input/<string:string>')
+def corrected(string):
+    print(string)
+    better_value = correcter(string)
+    print(type(better_value))
+    print(better_value)
+    return render_template("index_corrected.html", displayed= better_value)
 
 @app.route('/grey')
 def greyed():
@@ -27,7 +34,7 @@ def log_in():
     if request.method == 'POST':
         name = request.form['username']
         password = request.form['psw']
-
+        
         user = query_by_name_and_password(name, password)
         if user is not None and user.password == password:
             flask_session['username'] = user.name

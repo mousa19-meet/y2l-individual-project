@@ -83,9 +83,7 @@ button {
 
 function correction() {
 	var x = document.getElementById("inputForm").value;
-	//var better_x = api(x);
-	//document.getElementById('demo').innerHTML = better_x;
-  document.getElementById("demo").innerHTML = x;
+  	document.getElementById("demo").innerHTML = x;
 };
 
 var canvasDraw = {
@@ -239,6 +237,6 @@ var canvasDraw = {
 <input id="inputForm" type="text" name="letters">
 <canvas id="myCanvas"></canvas>
 </div>
-<button onclick="correction()">Try</button>
+<button onclick="correction()">Display what's written</button>
 </body>
 </html>

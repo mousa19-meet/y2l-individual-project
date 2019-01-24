@@ -1,7 +1,5 @@
 from flask import Flask, flash, render_template, url_for, redirect,Response, request, session as flask_session
 from database import *
-from api import *
-import json,requests
 
 app = Flask(__name__)
 
